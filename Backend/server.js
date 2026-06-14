@@ -34,10 +34,10 @@ app.use("/api/v1/dashboard",dashboardRoutes);
 //Serve uploads folder
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
 if(process.env.NODE_ENV === 'production' ){
-app.use(express.static(path.join(__dirname,"../frontend/expense_tracker/dist")));
+app.use(express.static(path.join(__dirname,"../Frontend/expense_tracker/dist")));
 
 app.get((req, res) => {
-    res.sendFile(path.join(__dirname,"../frontend/expense_tracker","dist","index.html"));
+    res.sendFile(path.join(__dirname,"../Frontend/expense_tracker","dist","index.html"));
 });
 }
 
