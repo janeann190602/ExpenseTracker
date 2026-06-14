@@ -6,10 +6,6 @@
     "build": "npm install --prefix Backend && npm install --prefix Frontend/expense_tracker && npm run build --prefix Frontend/expense_tracker",
     "start": "npm run start --prefix Backend"
   },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0"
-  },
     "keywords": [],
     "author": "",
     "license": "ISC",
