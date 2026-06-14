@@ -4,7 +4,7 @@ const {
     registerUser,
     loginUser,
     getUserInfo,
-} = require("../controllers/authcontroller");
+} = require("../controllers/authController");
 const upload = require('../middleware/uploadMiddleware');
 const router = express.Router();
 
