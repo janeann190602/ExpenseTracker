@@ -11,7 +11,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const app = express();
 
 //Middleware to handle cors
-
+if(process.env.NODE_ENV !== 'production'){
 app.use(
     cors({
         origin: process.env.CLIENT_URL || '*',
@@ -19,6 +19,8 @@ app.use(
         allowedHeaders: ["Content-Type", "Authorization"],
     })
 );
+}
+
 
 app.use(express.json());
 
@@ -31,5 +33,13 @@ app.use("/api/v1/dashboard",dashboardRoutes);
 
 //Serve uploads folder
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
+if(process.env.NODE_ENV === 'production' ){
+app.use(express.static(path.join(__dirname,"../frontend/expense_tracker/dist")));
+
+app.get((req, res) => {
+    res.sendFile(path.join(__dirname,"../frontend/expense_tracker","dist","index.html"));
+});
+}
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`Server runnimg on port ${PORT}`));
